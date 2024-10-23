@@ -1,20 +1,20 @@
 -- Create distribution channel table
 CREATE TABLE distributionchannel
 (
-	customercode	TEXT		NOT NULL,
+	customercode	        TEXT		NOT NULL,
 	storecode		TEXT		NOT NULL,
 	b2bb2c			TEXT		NOT NULL,
 	channel			TEXT		NOT NULL,
 	citylevel		TEXT		NOT NULL,
-	storelevel		TEXT				,
-	areagroup		TEXT				,
-	urbanization	TEXT		NOT NULL,
+	storelevel		TEXT			,
+	areagroup		TEXT			,
+	urbanization	        TEXT		NOT NULL,
 	branch			TEXT		NOT NULL,
-	showroomarea	DECIMAL				,
-	warehousearea	DECIMAL				,
-	openmonth		VARCHAR(2)			,
-	openyear		VARCHAR(4)			,
-	Active			INT			NOT NULL,
+	showroomarea	        DECIMAL			,
+	warehousearea	 	DECIMAL		        ,
+	openmonth		VARCHAR(2)		,
+	openyear		VARCHAR(4)		,
+	Active			INT		NOT NULL,
 	PRIMARY KEY (customercode)
 );
 
@@ -27,7 +27,7 @@ CSV HEADER;
 -- Clean distribution channel table
 UPDATE distributionchannel
 SET 
-    channel = CASE
+    	channel = CASE
                   WHEN channel = 'CHTT' THEN 'Retail Store'
                   WHEN channel = 'ONLINE' THEN 'Online'
                   WHEN channel = 'ST' THEN 'Supermarket'
@@ -57,25 +57,24 @@ SET
 					WHEN branch = 'CNCA' THEN 'Cambodia'
 					ELSE 'Others'
               	END;
-select * from distributionchannel;
 
 -- Create retail store table
 CREATE TABLE retailstore
 (
-	customercode	TEXT		NOT NULL,
+	customercode	        TEXT		NOT NULL,
 	storecode		TEXT		NOT NULL,
 	b2bb2c			TEXT		NOT NULL,
 	channel			TEXT		NOT NULL,
 	citylevel		TEXT		NOT NULL,
-	storelevel		TEXT				,
-	areagroup		TEXT				,
-	urbanization	TEXT		NOT NULL,
+	storelevel		TEXT			,
+	areagroup		TEXT			,
+	urbanization	        TEXT		NOT NULL,
 	branch			TEXT		NOT NULL,
-	showroomarea	DECIMAL				,
-	warehousearea	DECIMAL				,
-	openmonth		VARCHAR(2)			,
-	openyear		VARCHAR(4)			,
-	Active			INT			NOT NULL,
+	showroomarea	        DECIMAL			,
+	warehousearea	 	DECIMAL		        ,
+	openmonth		VARCHAR(2)		,
+	openyear		VARCHAR(4)		,
+	Active			INT		NOT NULL,
 	PRIMARY KEY (customercode)
 );
 
