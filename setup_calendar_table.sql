@@ -4,10 +4,10 @@ CREATE TABLE calendar
     year        	VARCHAR(4) 	NOT NULL, -- 2020
     month       	VARCHAR(3) 	NOT NULL, -- 1, 2, 3,..., 12
     week        	VARCHAR(2) 	NOT NULL, -- 1, 2, 3,..., 52
-    lunarnewyear	VARCHAR(3)	NOT NULL, -- Yes/No
+	lunarnewyear	VARCHAR(3)	NOT NULL, -- Yes/No
     season      	VARCHAR(10),          -- 2018T11-02
-    pk_yearweek		VARCHAR(6),           -- 202001
-    PRIMARY KEY (pk_yearweek)
+	pk_yearweek		VARCHAR(6),           -- 202001
+	PRIMARY KEY (pk_yearweek)
 );
 
 -- Create the trigger function to populate month_3char
