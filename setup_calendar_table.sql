@@ -12,7 +12,7 @@ CREATE TABLE calendar
     PRIMARY KEY (pk_date)
 );
 
--- Create the trigger function to populate month_3char
+-- Create the trigger function to populate month_3char, week_2char, pk_date
 CREATE OR REPLACE FUNCTION update_calendar() RETURNS TRIGGER AS $$
 BEGIN
 	-- update month_3char
