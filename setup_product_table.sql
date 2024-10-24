@@ -24,10 +24,10 @@ CREATE TABLE product
 CREATE OR REPLACE FUNCTION clean_product() RETURNS TRIGGER AS $$
 BEGIN
 	-- clean colorgroup
-	IF NEW.colorgroup = 'T?I' THEN NEW.colorgroup := 'Dark';
-	ELSIF NEW.colorgroup = 'SÁNG' THEN NEW.colorgroup := 'Bright';
-	ELSIF NEW.colorgroup = '?EN' THEN NEW.colorgroup := 'Black';
-	ELSIF NEW.colorgroup = 'TR?NG' THEN NEW.colorgroup := 'White';
+	IF NEW.colorgroup = 'T?I' 	THEN NEW.colorgroup := 'Dark';
+	ELSIF NEW.colorgroup = 'SÁNG' 	THEN NEW.colorgroup := 'Bright';
+	ELSIF NEW.colorgroup = '?EN' 	THEN NEW.colorgroup := 'Black';
+	ELSIF NEW.colorgroup = 'TR?NG' 	THEN NEW.colorgroup := 'White';
 	ELSIF NEW.colorgroup = 'NHI?U MÀU' THEN NEW.colorgroup := 'Multicolor';
 	ELSE NEW.colorgroup := 'Others';
 	END IF;
