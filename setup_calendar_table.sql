@@ -1,4 +1,4 @@
--- Create table calendar
+-- Create calendar table
 CREATE TABLE calendar
 (
     year        	VARCHAR(4) 	NOT NULL, -- 2020
@@ -10,22 +10,22 @@ CREATE TABLE calendar
 	PRIMARY KEY (pk_yearweek)
 );
 
--- Create the trigger function to populate month_3char
+-- Create trigger function to clean calendar table
 CREATE OR REPLACE FUNCTION clean_calendar() RETURNS TRIGGER AS $$
 BEGIN
-	-- update month
+	-- clean month
     IF LENGTH(NEW.month) = 1 THEN
         NEW.month := CONCAT('00', NEW.month);
     ELSE
         NEW.month := CONCAT('0', NEW.month);
     END IF;
-	-- update week_2char
+	-- clean week_2char
 	IF LENGTH(NEW.week) = 1 THEN
         NEW.week := CONCAT('0', NEW.week);
     ELSE
         NEW.week := NEW.week;
     END IF;
-	-- update pk_date
+	-- clean pk_date
 	NEW.pk_yearweek := CONCAT(NEW.year, NEW.week);
     RETURN NEW;
 END;
@@ -37,7 +37,7 @@ BEFORE INSERT OR UPDATE ON calendar
 FOR EACH ROW
 EXECUTE FUNCTION clean_calendar();
 
--- Update data into calendar
+-- Update data into calendar table
 COPY calendar (year, month, week, lunarnewyear, season)
 FROM 'D:\personal_project\retail_dashboard\calendar.csv'
 DELIMITER ','
@@ -48,4 +48,4 @@ DELETE FROM calendar
 WHERE season IS NULL;
 
 -- Recheck calendar table
-select * from calendar;
+select * from calendar limit 10;
