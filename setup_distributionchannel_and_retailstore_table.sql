@@ -1,83 +1,71 @@
 -- Create distribution channel table
 CREATE TABLE distributionchannel
 (
-	customercode	        TEXT		NOT NULL,
+	customercode	TEXT		NOT NULL,
 	storecode		TEXT		NOT NULL,
 	b2bb2c			TEXT		NOT NULL,
 	channel			TEXT		NOT NULL,
 	citylevel		TEXT		NOT NULL,
-	storelevel		TEXT			,
-	areagroup		TEXT			,
-	urbanization	        TEXT		NOT NULL,
+	storelevel		TEXT				,
+	areagroup		TEXT				,
+	urbanization	TEXT		NOT NULL,
 	branch			TEXT		NOT NULL,
-	showroomarea	        DECIMAL			,
-	warehousearea	 	DECIMAL		        ,
-	openmonth		VARCHAR(2)		,
-	openyear		VARCHAR(4)		,
-	Active			INT		NOT NULL,
+	showroomarea	DECIMAL				,
+	warehousearea	DECIMAL				,
+	openmonth		VARCHAR(2)			,
+	openyear		VARCHAR(4)			,
+	Active			INT			NOT NULL,
 	PRIMARY KEY (customercode)
 );
 
--- Copy data to distribution channel table
+-- Create trigger function to clean distribution channel table
+CREATE OR REPLACE FUNCTION clean_distributionchannel() RETURNS TRIGGER AS $$
+BEGIN
+	-- clean channel
+	IF 		NEW.channel = 'CHTT' 	THEN NEW.channel := 'Retail Store';
+	ELSIF	NEW.channel = 'ONLINE' 	THEN NEW.channel := 'Online';
+	ELSIF	NEW.channel = 'ST' 		THEN NEW.channel := 'Supermarket';
+	ELSE	NEW.channel := 'Wholesales';
+	END IF;
+	-- clean citylevel
+	IF 		NEW.citylevel = 'C?p 1' 	THEN NEW.citylevel := 'Level 1';
+	ELSIF	NEW.citylevel = 'C?p 2' 	THEN NEW.citylevel := 'Level 2';
+	ELSIF	NEW.citylevel = 'C?p TW' 	THEN NEW.citylevel := 'Central Level';
+	ELSE	NEW.citylevel := 'Others';
+	END IF;
+	-- clean storelevel
+	IF 		NEW.storelevel = 'TIÊU BI?U' THEN NEW.storelevel := 'Key store';
+	ELSE	NEW.storelevel := NEW.storelevel;
+	END IF;
+	-- clean urbanization
+	IF 		NEW.urbanization = 'N?i thành'				THEN NEW.urbanization := 'Urban';
+	ELSIF	NEW.urbanization = 'Nông thôn' 			THEN NEW.urbanization := 'Rural';
+	ELSIF	NEW.urbanization = 'TT hành chính kinh t?'	THEN NEW.urbanization := 'Key Location';
+	ELSE	NEW.urbanization := 'Others';
+	END IF;
+	-- clean branch
+	IF 		NEW.branch = 'CNMN'			THEN NEW.branch := 'South Area';
+	ELSIF	NEW.branch = 'CNMB' 		THEN NEW.branch := 'North Area';
+	ELSIF	NEW.branch = 'CNMT'			THEN NEW.branch := 'West Area';
+	ELSIF	NEW.branch = 'CNTR-TN'		THEN NEW.branch := 'Central-Highland Area';
+	ELSIF	NEW.branch = 'CNCA'			THEN NEW.branch := 'Cambodia';
+	ELSE	NEW.branch := 'Others';
+	END IF;
+	RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create trigger to clean distribution channel table
+CREATE TRIGGER clean_distributionchannel
+BEFORE INSERT OR UPDATE ON distributionchannel
+FOR EACH ROW
+EXECUTE FUNCTION clean_distributionchannel();
+
+-- Copy data from csv file to distribution channel table
 COPY distributionchannel
 FROM 'D:\personal_project\retail_dashboard\distribution.csv'
 DELIMITER ','
 CSV HEADER;
 
--- Clean distribution channel table
-UPDATE distributionchannel
-SET 
-    	channel = CASE
-                  WHEN channel = 'CHTT' THEN 'Retail Store'
-                  WHEN channel = 'ONLINE' THEN 'Online'
-                  WHEN channel = 'ST' THEN 'Supermarket'
-                  ELSE 'Wholesales'
-              END,
-	citylevel = CASE
-                  WHEN citylevel = 'C?p 1' THEN 'Level 1'
-                  WHEN citylevel = 'C?p 2' THEN 'Level 2'
-				  WHEN citylevel = 'C?p TW' THEN 'Central Level'
-                  ELSE 'Others'
-              END,
-	storelevel = CASE
-                  WHEN storelevel = 'TIÊU BI?U' THEN 'Key store'
-                  ELSE storelevel
-              END,
-	urbanization = CASE
-                 	WHEN urbanization = 'N?i thành' THEN 'Urban'
-				  	WHEN urbanization = 'Nông thôn' THEN 'Rural'
-				  	WHEN urbanization = 'TT hành chính kinh t?' THEN 'Key location'
-                  	ELSE 'Others'
-              	END,
-	branch = CASE
-                 	WHEN branch = 'CNMN' THEN 'South Area'
-				  	WHEN branch = 'CNMB' THEN 'North Area'
-				  	WHEN branch = 'CNMT' THEN 'West Area'
-				  	WHEN branch = 'CNTR-TN' THEN 'Central-Highland Area'
-					WHEN branch = 'CNCA' THEN 'Cambodia'
-					ELSE 'Others'
-              	END;
-
--- Create retail store table
-CREATE TABLE retailstore
-(
-	customercode	        TEXT		NOT NULL,
-	storecode		TEXT		NOT NULL,
-	b2bb2c			TEXT		NOT NULL,
-	channel			TEXT		NOT NULL,
-	citylevel		TEXT		NOT NULL,
-	storelevel		TEXT			,
-	areagroup		TEXT			,
-	urbanization	        TEXT		NOT NULL,
-	branch			TEXT		NOT NULL,
-	showroomarea	        DECIMAL			,
-	warehousearea	 	DECIMAL		        ,
-	openmonth		VARCHAR(2)		,
-	openyear		VARCHAR(4)		,
-	Active			INT		NOT NULL,
-	PRIMARY KEY (customercode)
-);
-
--- Get data into retail store table
-INSERT INTO retailstore
-SELECT * FROM distributionchannel WHERE channel = 'Retail Store';
+-- Recheck distribution channel data
+SELECT * FROM distributionchannel LIMIT 10;
