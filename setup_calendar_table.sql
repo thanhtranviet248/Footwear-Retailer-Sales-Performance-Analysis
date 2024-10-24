@@ -31,21 +31,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Create the trigger
+-- Create trigger to clean calendar table
 CREATE TRIGGER clean_calendar
 BEFORE INSERT OR UPDATE ON calendar
 FOR EACH ROW
 EXECUTE FUNCTION clean_calendar();
 
--- Update data into calendar table
+-- Update data from csv file into calendar table
 COPY calendar (year, month, week, lunarnewyear, season)
 FROM 'D:\personal_project\retail_dashboard\calendar.csv'
 DELIMITER ','
 CSV HEADER;
 
--- Clean null value in season
+-- Clean rows where season is null
 DELETE FROM calendar
 WHERE season IS NULL;
 
 -- Recheck calendar table
-select * from calendar limit 10;
+SELECT * FROM calendar LIMIT 10;
