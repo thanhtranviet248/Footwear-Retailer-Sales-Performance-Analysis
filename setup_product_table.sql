@@ -32,7 +32,9 @@ BEGIN
 	ELSE NEW.colorgroup := 'Others';
 	END IF;
 	-- clean agegroup
-	NEW.agegroup = REPLACE(REPLACE(NEW.agegroup, '??n', 'to'), ' tu?i', '');
+	IF NEW.agegroup = 'Khác' THEN NEW.agegroup := 'Others';
+	ELSE NEW.agegroup := REPLACE(REPLACE(NEW.agegroup, '??n', 'to'), ' tu?i', '');
+	END IF;
 	RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
