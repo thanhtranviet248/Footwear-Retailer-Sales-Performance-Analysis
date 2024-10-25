@@ -10,7 +10,7 @@ CREATE TABLE product
 	pricegroup 		TEXT,
 	brand 			TEXT 		NOT NULL,
 	gender 			VARCHAR(3) 	NOT NULL,
-	productgroup V		ARCHAR(3) 	NOT NULL,
+	productgroup		VARCHAR(3) 	NOT NULL,
 	detailproductgroup 	VARCHAR(6) 	NOT NULL,
 	size 			VARCHAR(2),
 	sizerange 		VARCHAR(5),
