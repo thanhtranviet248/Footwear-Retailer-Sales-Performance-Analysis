@@ -3,27 +3,27 @@ CREATE TABLE sales
 (
 	month 			TEXT 		NOT NULL,
 	week			TEXT		NOT NULL,
-	customercode	TEXT		NOT NULL,
-	sku				VARCHAR(14)	NOT NULL,
-	qty				NUMERIC		NOT NULL,
+	customercode		TEXT		NOT NULL,
+	sku			VARCHAR(14)	NOT NULL,
+	qty			NUMERIC		NOT NULL,
 	cogs			NUMERIC		NOT NULL,
 	revenue			NUMERIC		NOT NULL,
-	cogsusd			NUMERIC				,
-	revenueusd		NUMERIC				,		
+	cogsusd			NUMERIC			,
+	revenueusd		NUMERIC			,		
 	yearweek		TEXT			,
-	FOREIGN KEY (yearweek) REFERENCES calendar(yearweek),
-	FOREIGN KEY (customercode) REFERENCES distributionchannel(customercode),
-	FOREIGN KEY (sku) REFERENCES product(sku)
+	FOREIGN KEY (yearweek) 		REFERENCES calendar(yearweek),
+	FOREIGN KEY (customercode) 	REFERENCES distributionchannel(customercode),
+	FOREIGN KEY (sku) 		REFERENCES product(sku)
 );
 
 -- Create the trigger function to populate cogsusd, revenueusd, fk_date
 CREATE OR REPLACE FUNCTION clean_sales() RETURNS TRIGGER AS $$
 BEGIN
 	-- update cogs_usd and revenueusd
-		NEW.cogsusd 	:= NEW.cogs/25000;
+	NEW.cogsusd 	:= NEW.cogs/25000;
     	NEW.revenueusd 	:= NEW.revenue/25000;
 	-- update yearweek
-		NEW.yearweek := SUBSTRING(NEW.week,1,6);
+	NEW.yearweek := SUBSTRING(NEW.week,1,6);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
