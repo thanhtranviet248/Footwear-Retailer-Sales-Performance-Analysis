@@ -23,7 +23,7 @@ BEGIN
 	NEW.cogsusd 	:= NEW.cogs/25000;
     	NEW.revenueusd 	:= NEW.revenue/25000;
 	-- update yearweek
-	NEW.yearweek := SUBSTRING(NEW.week,1,6);
+	NEW.yearweek 	:= SUBSTRING(NEW.week,1,6);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
