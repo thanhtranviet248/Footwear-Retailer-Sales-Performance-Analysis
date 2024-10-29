@@ -1,12 +1,12 @@
 -- Create calendar table
 CREATE TABLE calendar
 (
-    year        	VARCHAR(4) 	NOT NULL, -- 2020
-    month       	VARCHAR(3) 	NOT NULL, -- 1, 2, 3,..., 12
-    week        	VARCHAR(2) 	NOT NULL, -- 1, 2, 3,..., 52
-    lunarnewyear	VARCHAR(3)	NOT NULL, -- Yes/No
-    season      	VARCHAR(10),              -- 2018T11-02
-    yearweek		VARCHAR(6),               -- 202001
+    year        	VARCHAR(4) 	NOT NULL,
+    month       	VARCHAR(3) 	NOT NULL,
+    week        	VARCHAR(2) 	NOT NULL,
+    lunarnewyear	VARCHAR(3)	NOT NULL,
+    season      	VARCHAR(10),
+    yearweek		VARCHAR(6),
     PRIMARY KEY (yearweek)
 );
 
