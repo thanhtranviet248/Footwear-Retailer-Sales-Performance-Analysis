@@ -2,7 +2,7 @@
 CREATE VIEW retail_202100_202330 AS
 SELECT	a.qty, a.cogsusd, a.revenueusd, 	
 		b.*,
-		c.storecode, c.channel, c.citylevel, c.areagroup, c.urbanization, c.branch, c.active, c.storelevel,
+		c.storecode, c.channel, c.citylevel, c.areagroup, c.urbanization, c.branch, c.active, c.storelevel, c.showroomarea, c.warehousearea,
 		d.*
 FROM sales a
 INNER JOIN product b
