@@ -47,7 +47,7 @@ BEGIN
 	IF 	NEW.branch = 'CNMN'		THEN NEW.branch := 'South Area';
 	ELSIF	NEW.branch = 'CNMB' 		THEN NEW.branch := 'North Area';
 	ELSIF	NEW.branch = 'CNMT'		THEN NEW.branch := 'West Area';
-	ELSIF	NEW.branch = 'CNTR-TN'		THEN NEW.branch := 'Central-Highland Area';
+	ELSIF	NEW.branch = 'CNMTR-TN'		THEN NEW.branch := 'Central-Highland Area';
 	ELSIF	NEW.branch = 'CNCA'		THEN NEW.branch := 'Cambodia';
 	ELSE	NEW.branch := 'Others';
 	END IF;
