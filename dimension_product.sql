@@ -33,7 +33,7 @@ BEGIN
 	END IF;
 	-- clean agegroup
 	IF NEW.agegroup = 'Khác' 		THEN NEW.agegroup := 'Others';
-	ELSE NEW.agegroup := REPLACE(REPLACE(NEW.agegroup, '??n', 'to'), ' tu?i', '');
+	ELSE NEW.agegroup := REPLACE(REPLACE(REPLACE(NEW.agegroup, '??n', 'to'), ' tu?i', ''),'Trên', 'Above');
 	END IF;
 	RETURN NEW;
 END;
