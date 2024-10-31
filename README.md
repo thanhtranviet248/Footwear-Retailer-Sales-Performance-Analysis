@@ -23,10 +23,16 @@ There are 2 tools used: PostgreSQL and Power BI:
 
 ## 4. Key findings
 ### Page 1: General
-* The business result in 2023 is worse than 2022 in terms of revenue. Except March and July, the remaining months of 2023 have lower revenue versus 2022 ones.
-* Gross margin is well managed at around 30% for all branches and stores
+* The peak seasons are in January, August and December --> New Year Eve, Lunar New Year and Back2School.
+* The business result in 2023 is worse than 2022 in terms of revenue. Except March and July, the remaining months of 2023 have negative YoY growth rate. --> Further investigate.
+* Average price fluctuate over the time, although August-September is peak season but average price is only 12$ --> High demand but low-value products.
 ### Page 2: Store
-* Level-B stores (69 stores) are the main contributors to total revenues at 28% share of business
-* With almost the same number of stores, the Level-C stores (67 stores) only contribute 15% to total revenue
-* etc. will update later
+* All the stores experience the same sales pattern over the examined time.
+* Level-B stores (69 stores) are the main contributors to total revenues at 28% share of business.
+* With similar number of stores, the Level-C stores (67 stores) only contribute 15% to total revenue. --> Further investigate.
+* Some outstanding stores with good revenue per sqm are 1203, 1123, 1208, 1114, 1109.
+* Some key stores such as 1101, although having high revenue contribution but utilization on showroom sqm is still low.
+* In a more aggregated view, North area is the best performer when having high utilization on showroom area while Cambodia is in contrary.
+### Page 3: Product
+* 
 
