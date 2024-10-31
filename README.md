@@ -8,6 +8,12 @@ There are 2 tools used: PostgreSQL and Power BI
 * PostgreSQL: create databases, import data from sources, clean and map the necessary data for Power BI inputs.
 * Power BI: calculate metrics using DAX and visualize the data to find insights.
 
+## Process
+### Start with PostgreSQL
+* Create 4 tables, 1 transactional (sales) and 3 dimensional (calendar, distributionchannel and product)
+* Setup triggers to clean the data, e.g., 
+
 ## Key findings
-* ![image](https://github.com/user-attachments/assets/d05b54ce-f5c9-4787-9c31-41572a7c9635)
+* In general, the business result in 2023 is worse than 2022 in terms of revenue. Except March and July, the remaining months of 2023 have lower revenue versus 2022 ones.
+* 
 
