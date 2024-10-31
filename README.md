@@ -17,7 +17,7 @@ There are 2 tools used: PostgreSQL and Power BI:
 * Create the consolidated view includes sales transaction and necessary dimensions to perform the analysis.
 
 ### Continue with Power BI
-* Import the consolidated view into Power BI
+* Import the consolidated view into Power BI.
 * Using DAX to calculate some necessary metrics e.,g growth rate, average store revenue, revenue per square meter, etc.
 * Visualize the data and figure out the insights.
 
