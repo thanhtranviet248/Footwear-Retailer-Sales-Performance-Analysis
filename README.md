@@ -1,4 +1,4 @@
-# Footwear Retailer Sales Analysis #
+# Footwear Retailer Sales Performance Analysis #
 
 ## 1. Purpose
 The aiming of this project is to visualize the sales data from January 2022 until July 2023 of a footwear retailer on their retail store channel to find out the sales trend as well as exploring new insights that help improve business results.
