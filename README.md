@@ -31,8 +31,10 @@ There are 2 tools used: PostgreSQL and Power BI:
 * Level-B stores (69 stores) are the main contributors to total revenues at 28% share of business.
 * With similar number of stores, the Level-C stores (67 stores) only contribute 15% to total revenue. --> Further investigate.
 * Some outstanding stores with good revenue per sqm are 1203, 1123, 1208, 1114, 1109.
-* Some key stores such as 1101, although having high revenue contribution but utilization on showroom sqm is still low.
+* Some key stores such as 1101, although having high revenue contribution but utilization on showroom sqm is still low. --> Further investigate.
 * In a more aggregated view, North area is the best performer when having high utilization on showroom area while Cambodia is in contrary.
 ### Page 3: Product
-* 
-
+* Men and Dark color products are top 1 contributors to total revenue for all the time.
+* In August-September and December-January periods, Boy products take over Girl products. --> Further investigate.
+* In August, SANTD products surpass GTTP ones to become the top 1 revenue contributor. --> Back2School.
+* Main customers of the retailer are 3 groups: "6-11 yo", "16-22 yo" and "23-28 yo".
