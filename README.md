@@ -32,7 +32,7 @@ There are 2 tools used: PostgreSQL and Power BI:
 * With similar number of stores, the Level-C stores (67 stores) only contribute 15% to total revenue. --> Further investigate.
 * Some outstanding stores with good revenue per sqm are 1203, 1123, 1208, 1114, 1109.
 * Some key stores such as 1101, although having high revenue contribution but utilization on showroom sqm is still low. --> Further investigate.
-* In a more aggregated view, North area is the best performer when having high utilization on showroom area while Cambodia is in contrary.
+* In a more aggregated view, North area is the best performer when having high utilization on showroom area while Cambodia is in the contrary.
 ### Page 3: Product
 * Men and Dark color products are top 1 contributors to total revenue for all the time.
 * In August-September and December-January periods, Boy products take over Girl products. --> Further investigate.
