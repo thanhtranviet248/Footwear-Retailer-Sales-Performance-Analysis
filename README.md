@@ -1,9 +1,13 @@
 # Footwear Retailer Sales Analysis #
 
 ## Purpose
-The aiming of this project is to display the sales performance of a footwear retailer from January 2022 until July 2023 for the sales team to keep track their work as well as exploring new insights that help improve business results.
+The aiming of this project is to visualize the sales data from January 2022 until July 2023 to find out the sales trend as well as exploring new insights that help improve business results.
 
 ## Tools used
 There are 2 tools used: PostgreSQL and Power BI
-* PostgreSQL for creating database, importing data from sources, cleaning and mapping the necessary data for the analysis.
-* Power BI for creating measures by DAX and visualizing the data to find insights.
+* PostgreSQL: create databases, import data from sources, clean and map the necessary data for Power BI inputs.
+* Power BI: calculate metrics using DAX and visualize the data to find insights.
+
+## Key findings
+* ![image](https://github.com/user-attachments/assets/d05b54ce-f5c9-4787-9c31-41572a7c9635)
+
